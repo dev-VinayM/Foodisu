@@ -1,5 +1,5 @@
 # Foodisu - A Food Recipe Application
-Project to demostrate some important jetpack libraries.
+Project to demonstrate some important jetpack libraries.
 
 ## About Project :
 API used - https://www.themealdb.com/api.php
