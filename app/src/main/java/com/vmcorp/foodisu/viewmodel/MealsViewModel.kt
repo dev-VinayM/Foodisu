@@ -3,15 +3,15 @@ package com.vmcorp.foodisu.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.vmcorp.foodisu.listener.DogsRepositoryListener
-import com.vmcorp.foodisu.model.DogBreed
-import com.vmcorp.foodisu.repository.DogsRepository
+import com.vmcorp.foodisu.listener.MealsRepositoryListener
+import com.vmcorp.foodisu.model.Meal
+import com.vmcorp.foodisu.repository.MealsRepository
 import com.vmcorp.foodisu.util.NotificationHelper
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class DogsViewModel(application: Application) : AndroidViewModel(application),
-    DogsRepositoryListener {
+class MealsViewModel(application: Application) : AndroidViewModel(application),
+    MealsRepositoryListener {
     private val parentJob = Job()
 
     private val coroutineContext: CoroutineContext
@@ -19,9 +19,9 @@ class DogsViewModel(application: Application) : AndroidViewModel(application),
 
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository = DogsRepository(this)
+    private val repository = MealsRepository(this)
 
-    val dogListData = MutableLiveData<MutableList<DogBreed>>()
+    val dogListData = MutableLiveData<MutableList<Meal>>()
 
     init {
         scope.launch {
@@ -29,7 +29,7 @@ class DogsViewModel(application: Application) : AndroidViewModel(application),
         }
     }
 
-    override fun onSuccess(dogList: MutableList<DogBreed>) {
+    override fun onSuccess(dogList: MutableList<Meal>) {
         NotificationHelper(getApplication()).createNotification()
         dogListData.postValue(dogList)
     }

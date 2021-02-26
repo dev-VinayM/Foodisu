@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vmcorp.foodisu.R
-import com.vmcorp.foodisu.adapter.DogListAdapter
-import com.vmcorp.foodisu.viewmodel.DogsViewModel
-import kotlinx.android.synthetic.main.fragment_lists.view.*
+import com.vmcorp.foodisu.adapter.MealListAdapter
+import com.vmcorp.foodisu.viewmodel.MealsViewModel
 
 class ListsFragment : Fragment() {
-    private lateinit var viewModel: DogsViewModel
+    private lateinit var viewModel: MealsViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
@@ -24,7 +22,7 @@ class ListsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.let {
-            viewModel = ViewModelProviders.of(it).get(DogsViewModel::class.java)
+            viewModel = ViewModelProviders.of(it).get(MealsViewModel::class.java)
         }
     }
 
@@ -36,7 +34,7 @@ class ListsFragment : Fragment() {
         viewModel.dogListData.observe(this, Observer {
             it?.let {
                 viewManager = LinearLayoutManager(activity)
-                viewAdapter = DogListAdapter(it)
+                viewAdapter = MealListAdapter(it)
 
                 recyclerView = view.findViewById<RecyclerView>(R.id.rv_dogList).apply {
                     // use this setting to improve performance if you know that changes

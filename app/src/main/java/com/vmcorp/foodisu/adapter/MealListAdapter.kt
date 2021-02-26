@@ -6,10 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.vmcorp.foodisu.R
 import com.vmcorp.foodisu.databinding.ViewDogListItemBinding
-import com.vmcorp.foodisu.model.DogBreed
+import com.vmcorp.foodisu.model.Meal
 
-class DogListAdapter(private val data: MutableList<DogBreed>) :
-    RecyclerView.Adapter<DogListAdapter.MyViewHolder>() {
+class MealListAdapter(private val data: MutableList<Meal>) :
+    RecyclerView.Adapter<MealListAdapter.MyViewHolder>() {
     override fun getItemCount(): Int {
         return data.size
     }
@@ -22,9 +22,14 @@ class DogListAdapter(private val data: MutableList<DogBreed>) :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): DogListAdapter.MyViewHolder {
+    ): MyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = DataBindingUtil.inflate<ViewDogListItemBinding>(inflater,R.layout.view_dog_list_item,parent,false)
+        val view = DataBindingUtil.inflate<ViewDogListItemBinding>(
+            inflater,
+            R.layout.view_dog_list_item,
+            parent,
+            false
+        )
         return MyViewHolder(view)
     }
 
