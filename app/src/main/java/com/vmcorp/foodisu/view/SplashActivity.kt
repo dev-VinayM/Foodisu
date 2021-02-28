@@ -1,7 +1,6 @@
 package com.vmcorp.foodisu.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.vmcorp.foodisu.R
@@ -10,13 +9,7 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-/*        Thread.sleep(3000) // Sleeping in the UI thread is almost always wrong.
-        val intent = Intent(this, HomeActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        startActivity(intent)*/
+        setContentView(R.layout.activity_splash)
 
         Handler().postDelayed(Runnable {
             kotlin.run {

@@ -8,11 +8,16 @@
         android:name="com.vmcorp.foodisu.view.ListsFragment"
         android:label="ListsFragment" >
         <action
-            android:id="@+id/action_listsFragment"
+            android:id="@+id/action_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.vmcorp.foodisu.view.DetailsFragment"
-        android:label="DetailsFragment" />
+        android:label="DetailsFragment" >
+        <argument
+            android:name="mealId"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>
