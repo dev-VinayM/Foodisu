@@ -4,11 +4,11 @@ Project to demonstrate some important jetpack libraries.
 ## About Project :
 API used - https://www.themealdb.com/api.php
 
-### App Architecture : MVVM
+### This Project showcases : 
+1) MVVM architecture
+2) Room Database
+3) Retrofit
+4) Glide
+5) Navigation 
+6) DataBinding
 
-### Project implements :
-1) Retrofit
-2) Glide
-3) Coroutines
-4) LiveData and ViewModel
-5) Navigation Component
