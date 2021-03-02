@@ -19,9 +19,10 @@ class MealsViewModel(application: Application) : AndroidViewModel(application),
 
     private val scope = CoroutineScope(coroutineContext)
 
-    private val repository = MealsRepository(this)
+    private val repository = MealsRepository(this, application)
 
-    val dogListData = MutableLiveData<MutableList<Meal>>()
+    val mealListData = MutableLiveData<MutableList<Meal>>()
+    val mealDetailsLiveData = MutableLiveData<Meal>()
 
     init {
         scope.launch {
@@ -29,11 +30,23 @@ class MealsViewModel(application: Application) : AndroidViewModel(application),
         }
     }
 
-    override fun onSuccess(dogList: MutableList<Meal>) {
+    override fun onSuccess(mutableList: MutableList<Meal>) {
         NotificationHelper(getApplication()).createNotification()
-        dogListData.postValue(dogList)
+        mealListData.postValue(mutableList)
     }
 
-    fun cancelAllRequests() = coroutineContext.cancel()
+    fun getMealFromKeyId(keyId: Int) {
+        scope.launch {
+            repository.getMealFromKeyId(keyId)
+        }
+    }
 
+    override fun onCleared() {
+        super.onCleared()
+        coroutineContext.cancel()
+    }
+
+    override fun onMealDetailsFetched(meal: Meal) {
+        mealDetailsLiveData.postValue(meal)
+    }
 }

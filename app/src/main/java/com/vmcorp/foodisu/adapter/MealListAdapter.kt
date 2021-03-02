@@ -10,8 +10,6 @@ import com.vmcorp.foodisu.R
 import com.vmcorp.foodisu.databinding.ViewMealListItemBinding
 import com.vmcorp.foodisu.listener.MealClickListener
 import com.vmcorp.foodisu.model.Meal
-import com.vmcorp.foodisu.view.DetailsFragment
-import com.vmcorp.foodisu.view.ListsFragment
 import com.vmcorp.foodisu.view.ListsFragmentDirections
 import kotlinx.android.synthetic.main.view_meal_list_item.view.*
 
@@ -45,7 +43,7 @@ class MealListAdapter(private val data: MutableList<Meal>) :
     class MyViewHolder(val view: ViewMealListItemBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onMealClicked(view: View) {
-        val mealId = view.tv_mealId.text.toString()
+        val mealId = view.tv_mealId.text.toString().toInt()
         val action = ListsFragmentDirections.actionDetailsFragment(mealId)
         Navigation.findNavController(view).navigate(action)
     }

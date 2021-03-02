@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vmcorp.foodisu.R
 import com.vmcorp.foodisu.adapter.MealListAdapter
 import com.vmcorp.foodisu.viewmodel.MealsViewModel
-import kotlinx.android.synthetic.main.fragment_lists.view.*
 
 class ListsFragment : Fragment() {
     private lateinit var viewModel: MealsViewModel
@@ -33,7 +31,7 @@ class ListsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_lists, container, false)
-        viewModel.dogListData.observe(viewLifecycleOwner, Observer {
+        viewModel.mealListData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 viewManager = LinearLayoutManager(activity)
                 viewAdapter = MealListAdapter(it)
@@ -54,11 +52,4 @@ class ListsFragment : Fragment() {
         })
         return view
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.rv_dogList.setOnClickListener {
-            Navigation.createNavigateOnClickListener(R.id.action_detailsFragment, null)
-        }
-    }
-
 }

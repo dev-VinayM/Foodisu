@@ -16,8 +16,7 @@
         android:name="com.vmcorp.foodisu.view.DetailsFragment"
         android:label="DetailsFragment" >
         <argument
-            android:name="mealId"
-            app:argType="string"
-            android:defaultValue="0" />
+            android:name="keyId"
+            app:argType="integer" />
     </fragment>
 </navigation>
