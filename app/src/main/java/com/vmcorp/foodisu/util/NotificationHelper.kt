@@ -13,7 +13,7 @@ import com.vmcorp.foodisu.R
 import com.vmcorp.foodisu.view.HomeActivity
 
 class NotificationHelper(val context: Context) {
-    private val CHANNEL_ID = "Dogs Channel Id"
+    private val CHANNEL_ID = "All Meals Channel"
     private val NOTIFICATION_ID = 123
 
     fun createNotification(){
@@ -27,11 +27,11 @@ class NotificationHelper(val context: Context) {
 
         val icon = BitmapFactory.decodeResource(context.resources, R.drawable.dog_icon)
 
-        val notificaation = NotificationCompat.Builder(context,CHANNEL_ID)
+        val notification = NotificationCompat.Builder(context,CHANNEL_ID)
             .setSmallIcon(R.drawable.dog_icon)
             .setLargeIcon(icon)
-            .setContentTitle("Dogs retrieved")
-            .setContentText("this notification has a content")
+            .setContentTitle("Meals retrieved")
+            .setContentText("All meals are retrieved. Click on the meal to get the recipe")
             .setStyle(
                 NotificationCompat.BigPictureStyle()
                     .bigPicture(icon)
@@ -41,14 +41,14 @@ class NotificationHelper(val context: Context) {
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
 
-        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notificaation)
+        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notification)
 
     }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = CHANNEL_ID
-            val descriptionText = "Channel Description"
+            val descriptionText = "Meals Retrieved"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
