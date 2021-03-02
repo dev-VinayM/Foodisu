@@ -45,7 +45,6 @@ class DetailsFragment : Fragment() {
         viewModel.mealDetailsLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
                 dataBinding.meal = it
-
             }
         })
 
