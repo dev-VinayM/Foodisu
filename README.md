@@ -12,4 +12,5 @@ API used - https://www.themealdb.com/api.php
 5) Navigation 
 6) DataBinding
 7) Kotlin Coroutines
+8) Notification
 
