@@ -4,7 +4,6 @@ import android.app.Application
 import com.vmcorp.foodisu.listener.MealsRepositoryListener
 import com.vmcorp.foodisu.localDataStorage.MealDao
 import com.vmcorp.foodisu.localDataStorage.MealDatabase
-import com.vmcorp.foodisu.model.Meal
 import com.vmcorp.foodisu.model.MealList
 import com.vmcorp.foodisu.remoteDataHelper.MealApi
 import com.vmcorp.foodisu.remoteDataHelper.MealApiService
@@ -28,7 +27,7 @@ class MealsRepository(
         apiResponse?.toMutableList()?.let { dogsRepositoryListener.onSuccess(it) }
     }
 
-    suspend fun getMealFromKeyId(keyId : Int){
+    suspend fun getMealFromKeyId(keyId: Int) {
         mealsRepositoryListener.onMealDetailsFetched(dao.getAllMeals(keyId))
     }
 

@@ -13,9 +13,6 @@ import com.vmcorp.foodisu.R
 import com.vmcorp.foodisu.databinding.FragmentDetailsBinding
 import com.vmcorp.foodisu.viewmodel.MealsViewModel
 
-/**
- * A simple [Fragment] subclass.
- */
 class DetailsFragment : Fragment() {
 
     private lateinit var dataBinding: FragmentDetailsBinding
