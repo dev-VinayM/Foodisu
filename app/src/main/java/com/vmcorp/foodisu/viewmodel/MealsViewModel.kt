@@ -4,9 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.vmcorp.foodisu.depenpencyInjection.DaggerMealsRepositoryComponent
-import com.vmcorp.foodisu.depenpencyInjection.MealsRepositoryComponent
-import com.vmcorp.foodisu.depenpencyInjection.MealsRepositoryModule
+import com.vmcorp.foodisu.depenpencyInjection.mealsRepository.DaggerMealsRepositoryComponent
+import com.vmcorp.foodisu.depenpencyInjection.mealsRepository.MealsRepositoryComponent
+import com.vmcorp.foodisu.depenpencyInjection.mealsRepository.MealsRepositoryModule
 import com.vmcorp.foodisu.listener.MealsRepositoryListener
 import com.vmcorp.foodisu.model.Meal
 import com.vmcorp.foodisu.repository.MealsRepository
@@ -30,7 +30,7 @@ class MealsViewModel(application: Application) : AndroidViewModel(application),
         mealsRepositoryComponent.inject(this)
 
         viewModelScope.launch {
-            repository.getDogsList()
+            repository.getMealList()
         }
     }
 

@@ -19,7 +19,7 @@ class MealsRepository(
     private val retrofit: Retrofit = MealApiService.getInstance()!!
     private var mealApi: MealApi = retrofit.create(MealApi::class.java)
 
-    suspend fun getDogsList() {
+    suspend fun getMealList() {
         val apiResponse = safeApiCall(
             call = { mealApi.getMealListAsync().await() },
             errorMessage = "Error Fetching Meal List"

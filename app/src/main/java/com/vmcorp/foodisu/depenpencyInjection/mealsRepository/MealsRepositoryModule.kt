@@ -1,4 +1,4 @@
-package com.vmcorp.foodisu.depenpencyInjection
+package com.vmcorp.foodisu.depenpencyInjection.mealsRepository
 
 import android.app.Application
 import com.vmcorp.foodisu.listener.MealsRepositoryListener
@@ -19,4 +19,5 @@ class MealsRepositoryModule(
             application
         )
     }
+
 }
