@@ -1,14 +1,16 @@
 package com.vmcorp.foodisu.repository
 
 import android.app.Application
+import com.vmcorp.foodisu.depenpencyInjection.retrofitInjection.DaggerRetrofitInstanceComponent
+import com.vmcorp.foodisu.depenpencyInjection.retrofitInjection.RetrofitInstanceComponent
 import com.vmcorp.foodisu.listener.MealsRepositoryListener
 import com.vmcorp.foodisu.localDataStorage.MealDao
 import com.vmcorp.foodisu.localDataStorage.MealDatabase
 import com.vmcorp.foodisu.model.MealList
 import com.vmcorp.foodisu.remoteDataHelper.MealApi
-import com.vmcorp.foodisu.remoteDataHelper.MealApiService
 import com.vmcorp.foodisu.util.safeApiCall
 import retrofit2.Retrofit
+import javax.inject.Inject
 
 class MealsRepository(
     private val mealsRepositoryListener: MealsRepositoryListener,
@@ -16,10 +18,22 @@ class MealsRepository(
 ) : BaseRepository() {
 
     private val dao: MealDao = MealDatabase(application).mealDao()
-    private val retrofit: Retrofit = MealApiService.getInstance()!!
-    private var mealApi: MealApi = retrofit.create(MealApi::class.java)
+
+    var retrofitInstanceComponent: RetrofitInstanceComponent
+
+    init {
+        retrofitInstanceComponent = initDagger()
+        retrofitInstanceComponent.inject(this)
+    }
+
+    @Inject
+    lateinit var retrofit: Retrofit
+
+    //    private val retrofit: Retrofit = MealApiService.getInstance()!!
+    private lateinit var mealApi: MealApi
 
     suspend fun getMealList() {
+        mealApi = retrofit.create(MealApi::class.java)
         val apiResponse = safeApiCall(
             call = { mealApi.getMealListAsync().await() },
             errorMessage = "Error Fetching Meal List"
@@ -41,4 +55,9 @@ class MealsRepository(
         }
         mealsRepositoryListener.onSuccess(mealList.meal.toMutableList())
     }
+
+
+    private fun initDagger(): RetrofitInstanceComponent =
+        DaggerRetrofitInstanceComponent.builder()
+            .build()
 }

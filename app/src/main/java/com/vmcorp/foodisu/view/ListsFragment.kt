@@ -13,6 +13,9 @@ import com.vmcorp.foodisu.R
 import com.vmcorp.foodisu.adapter.MealListAdapter
 import com.vmcorp.foodisu.viewmodel.MealsViewModel
 
+/***
+ * fragment to show list of food items
+ */
 class ListsFragment : Fragment() {
     private lateinit var viewModel: MealsViewModel
     private lateinit var recyclerView: RecyclerView

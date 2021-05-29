@@ -22,20 +22,3 @@ class SplashActivity : BaseActivity() {
         }, 3000)
     }
 }
-
-
-/**
- * Handler : Communicating back to Ui thread from other thread.
- *          Uses - 1) perform action on same thread in future
- *                 2) perform action on different thread
- *    post() enqueues Runnable objects
- *    sendMessage() enqueues Message object (in bundle form)
- */
-
-/**
- * Intent Flags :
- *              1. FLAG_NEW_TASK
- *              2. FLAG_CLEAR_TASK
- *              3. FLAG_SINGLE_TOP
- *              4. FLAG_CLEAR_TOP
- */

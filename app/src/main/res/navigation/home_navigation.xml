@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--navigation graphs - defines the flow of fragments-->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/home_navigation"
     app:startDestination="@id/listsFragment">
@@ -7,6 +8,7 @@
         android:id="@+id/listsFragment"
         android:name="com.vmcorp.foodisu.view.ListsFragment"
         android:label="ListsFragment" >
+<!--        action event triggers loading of next fragment-->
         <action
             android:id="@+id/action_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -15,6 +17,7 @@
         android:id="@+id/detailsFragment"
         android:name="com.vmcorp.foodisu.view.DetailsFragment"
         android:label="DetailsFragment" >
+<!--        defining the argument fragment needs-->
         <argument
             android:name="keyId"
             app:argType="integer" />

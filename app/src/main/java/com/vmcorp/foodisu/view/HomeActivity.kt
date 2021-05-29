@@ -7,23 +7,29 @@ import com.vmcorp.foodisu.depenpencyInjection.mealsViewModel.MealsViewModelModul
 import com.vmcorp.foodisu.viewmodel.MealsViewModel
 import javax.inject.Inject
 
+/**
+ * Landing screen activity - holds fragments
+ */
 
 class HomeActivity : BaseActivity() {
-    @Inject
-    lateinit var viewmodel: MealsViewModel
 
     lateinit var mealsViewModelComponent: MealsViewModelComponent
+
+    @Inject
+    lateinit var viewmodel: MealsViewModel      //field injecting viewmodel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.vmcorp.foodisu.R.layout.activity_home)
-//        viewmodel = ViewModelProviders.of(this).get(MealsViewModel::class.java)
-        mealsViewModelComponent = initDagger()
-        mealsViewModelComponent.inject(this)
+        mealsViewModelComponent = initDagger()      //init Dagger component
+        mealsViewModelComponent.inject(this)    //this will inject instance of viewmodel (specific to this activity)
 
     }
 
+    /***
+     * method to initialize Dagger Component
+     */
     private fun initDagger(): MealsViewModelComponent =
         DaggerMealsViewModelComponent.builder()
             .mealsViewModelModule(
